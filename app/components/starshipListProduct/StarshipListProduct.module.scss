@@ -1,0 +1,20 @@
+@use '@carbon/react/scss/type' as *;
+
+.name {
+  @include type-style('productive-heading-05');
+  font-weight: 600;
+}
+
+.model {
+  @include type-style('helper-text-02');
+}
+
+.price {
+  @include type-style('productive-heading-03');
+  font-weight: 600;
+}
+
+.overview {
+  @include type-style('productive-heading-03');
+  font-weight: 600;
+}

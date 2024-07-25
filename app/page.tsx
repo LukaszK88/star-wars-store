@@ -1,6 +1,7 @@
 'use client';
 import { useGetStarships } from '@/app/api/useGetStarships';
 import StarshipListProduct from './components/starshipListProduct/StarshipListProduct';
+import { Grid, Theme } from '@carbon/react';
 
 export default function Home() {
   const { data, error, isLoading } = useGetStarships();
