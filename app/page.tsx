@@ -1,15 +1,13 @@
 'use client';
 import { useGetStarships } from '@/app/api/useGetStarships';
-import { Button } from 'carbon-components-react';
+import StarshipListProduct from './components/starshipListProduct/StarshipListProduct';
 
 export default function Home() {
   const { data, error, isLoading } = useGetStarships();
 
   const renderStarships = () => {
     return data?.results.map((starship) => (
-      <div key={starship.MGLT} className=''>
-        {starship.name}
-      </div>
+      <StarshipListProduct key={starship.name} starship={starship} />
     ));
   };
 
@@ -18,8 +16,7 @@ export default function Home() {
 
   return (
     <main className='flex min-h-screen flex-col justify-between p-24'>
-      <Button>Example usage</Button>
-      <div className='flex flex-row'>{renderStarships()}</div>
+      <div className='grid grid-cols-2 gap-4'>{renderStarships()}</div>
     </main>
   );
 }
