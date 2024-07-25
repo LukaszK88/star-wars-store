@@ -1,4 +1,5 @@
 @use '@carbon/react/scss/type' as *;
+@use '@carbon/react/scss/spacing' as *;
 
 .name {
   @include type-style('productive-heading-05');
@@ -12,9 +13,11 @@
 .price {
   @include type-style('productive-heading-03');
   font-weight: 600;
+  padding-top: $spacing-04;
 }
 
 .overview {
   @include type-style('productive-heading-03');
   font-weight: 600;
+  padding: $spacing-04 0;
 }
