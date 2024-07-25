@@ -1,4 +1,10 @@
-import { Button, Tile, NumberInput, Tag, NumberInputOnChangeDataVariant } from 'carbon-components-react';
+import {
+  Button,
+  Tile,
+  NumberInput,
+  Tag,
+  NumberInputOnChangeDataVariant,
+} from 'carbon-components-react';
 import {
   UserMultiple,
   Portfolio,
@@ -20,7 +26,7 @@ type Props = {
 export default function StarshipListProduct({ starship }: Props) {
   const [quantity, setQuantity] = useState(1);
 
-  const {displayNotification} = useNotificationContext();
+  const { displayNotification } = useNotificationContext();
 
   const formatPrice = (cost: string) => {
     if (cost === 'unknown') {
@@ -34,12 +40,17 @@ export default function StarshipListProduct({ starship }: Props) {
       title: `Added ${quantity} - ${starship.name} to basket`,
       subtitle: 'Excellent choice 🚀',
       id: Math.random().toString(),
-    })
-  }
+    });
+  };
 
-  const handleQuantityChange = (_: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLButtonElement>, { value}: { value: number | string }) => {
+  const handleQuantityChange = (
+    _:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.MouseEvent<HTMLButtonElement>,
+    { value }: { value: number | string }
+  ) => {
     setQuantity(Number(value));
-  }
+  };
 
   return (
     <Tile>
@@ -79,15 +90,28 @@ export default function StarshipListProduct({ starship }: Props) {
             {starship.starship_class}
           </Tag>
         </div>
-      
-      <div className={styles.footer}>
-        <div >
-          <NumberInput 
-          onChange={handleQuantityChange} 
-          className={styles.numberInput} size='sm' id="number-input" label="Number of Ships" min={1} value={quantity} invalidText="Number is not valid" />
+
+        <div className={styles.footer}>
+          <div>
+            <NumberInput
+              onChange={handleQuantityChange}
+              className={styles.numberInput}
+              size='sm'
+              id='number-input'
+              label='Number of Ships'
+              min={1}
+              value={quantity}
+              invalidText='Number is not valid'
+            />
+          </div>
+          <Button
+            onClick={handleStarshipPurchase}
+            className='items-center'
+            isExpressive
+          >
+            Add to Basket
+          </Button>
         </div>
-        <Button onClick={handleStarshipPurchase} className='items-center' isExpressive>Add to Basket</Button>
-      </div>
       </div>
     </Tile>
   );
