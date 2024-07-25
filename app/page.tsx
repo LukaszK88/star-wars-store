@@ -16,8 +16,8 @@ export default function Home() {
   if (isLoading) return <div>loading...</div>;
 
   return (
-    <main className='flex min-h-screen flex-col justify-between p-24'>
-      <div className='grid grid-cols-2 gap-4'>{renderStarships()}</div>
+    <main className='flex min-h-screen flex-col justify-between p-6'>
+      <div className='grid grid-cols-2 gap-6'>{renderStarships()}</div>
     </main>
   );
 }

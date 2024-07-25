@@ -21,3 +21,14 @@
   font-weight: 600;
   padding: $spacing-04 0;
 }
+
+.numberInput {
+  padding-right: $spacing-04;
+}
+
+.footer {
+  padding-top: $spacing-08;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}

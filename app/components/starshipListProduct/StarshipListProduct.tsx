@@ -1,7 +1,5 @@
-import { Button, Tile, NumberInput, Tag } from 'carbon-components-react';
+import { Button, Tile, NumberInput, Tag, NumberInputOnChangeDataVariant } from 'carbon-components-react';
 import {
-  Add,
-  Subtract,
   UserMultiple,
   Portfolio,
   Wheat,
@@ -12,13 +10,18 @@ import {
   Rocket,
 } from '@carbon/icons-react';
 import styles from './StarshipListProduct.module.scss';
-import classNames from 'classnames';
+import { useNotificationContext } from '@/app/context/NotificationContext';
+import { useState } from 'react';
 
 type Props = {
   starship: Starship;
 };
 
 export default function StarshipListProduct({ starship }: Props) {
+  const [quantity, setQuantity] = useState(1);
+
+  const {displayNotification} = useNotificationContext();
+
   const formatPrice = (cost: string) => {
     if (cost === 'unknown') {
       return 'Price Unknown';
@@ -26,11 +29,20 @@ export default function StarshipListProduct({ starship }: Props) {
     return `${starship.cost_in_credits} Credits`;
   };
 
+  const handleStarshipPurchase = () => {
+    displayNotification({
+      title: `Added ${quantity} - ${starship.name} to basket`,
+      subtitle: 'Excellent choice 🚀',
+      id: Math.random().toString(),
+    })
+  }
+
+  const handleQuantityChange = (_: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLButtonElement>, { value}: { value: number | string }) => {
+    setQuantity(Number(value));
+  }
+
   return (
     <Tile>
-
-
-        
       <div>
         <div>
           <h1 className={styles.name}>{starship.name}</h1>
@@ -68,11 +80,13 @@ export default function StarshipListProduct({ starship }: Props) {
           </Tag>
         </div>
       
-      <div className='flex flex-row py-4'>
+      <div className={styles.footer}>
         <div >
-          <NumberInput className='px-4' size='sm' id="number-input" label="Number of Ships" min={0} value={1} invalidText="Number is not valid" />
+          <NumberInput 
+          onChange={handleQuantityChange} 
+          className={styles.numberInput} size='sm' id="number-input" label="Number of Ships" min={1} value={quantity} invalidText="Number is not valid" />
         </div>
-        <Button className='items-center' isExpressive>BUY</Button>
+        <Button onClick={handleStarshipPurchase} className='items-center' isExpressive>Add to Basket</Button>
       </div>
       </div>
     </Tile>
