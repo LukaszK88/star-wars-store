@@ -17,7 +17,7 @@ type NotificationPayload = {
 };
 
 type NotificationContext = {
-  displayNotification: (body: NotificationPayload) => void;
+  displayNotification: (payload: NotificationPayload) => void;
 };
 
 const NotificationContext = createContext<NotificationContext>({
@@ -34,13 +34,15 @@ export function NotificationProvider({ children }: Props) {
   const [notifications, setNotifications] = useState<NotificationPayload[]>([]);
 
   const closeNotification = (id: string) => {
-    setNotifications((value) =>
-      value.filter((notification) => notification.id !== id)
+    setNotifications((previousNotifications) =>
+      previousNotifications.filter((notification) => notification.id !== id)
     );
   };
 
   const displayNotification = useCallback((payload: NotificationPayload) => {
-    setNotifications((value) => value.concat(payload));
+    setNotifications((previousNotifications) =>
+      previousNotifications.concat(payload)
+    );
     setTimeout(() => {
       closeNotification(payload.id);
     }, DEFAULT_TIMEOUT);
@@ -70,7 +72,6 @@ export function NotificationProvider({ children }: Props) {
               />
             ))}
           </div>,
-
           document.body
         )}
     </NotificationContext.Provider>

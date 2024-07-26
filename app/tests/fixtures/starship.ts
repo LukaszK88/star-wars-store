@@ -1,4 +1,6 @@
-export const starshipResponse = {
+import { PaginatedResponse } from '@/app/types/api';
+
+export const starshipResponse: PaginatedResponse<Starship> = {
   count: 36,
   next: 'https://swapi.dev/api/starships/?page=2',
   previous: null,
