@@ -36,6 +36,7 @@ export default function StarshipListProduct({ starship }: Props) {
       subtitle: 'Excellent choice 🚀',
       id: Math.random().toString(),
     });
+    setQuantity(1)
   };
 
   const handleQuantityChange = (

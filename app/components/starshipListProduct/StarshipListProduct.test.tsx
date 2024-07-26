@@ -49,5 +49,7 @@ describe('<StarshipListProduct/>', () => {
       subtitle: 'Excellent choice 🚀',
       title: `Added ${newQuantity} - ${props.starship.name} to basket`,
     });
+
+    expect(screen.getByDisplayValue(quantity)).toBeDefined();
   });
 });
