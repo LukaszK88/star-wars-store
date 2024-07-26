@@ -1,0 +1,21 @@
+@use '@carbon/react/scss/spacing' as *;
+
+.container {
+  position: fixed;
+  top: $spacing-04;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.notification {
+  margin-bottom: $spacing-03;
+}
+
+@media (screen(sm)) {
+  .container {
+    right: $spacing-04;
+    justify-content: flex-end;
+  }
+}

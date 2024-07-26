@@ -9,6 +9,7 @@ import {
   useState,
 } from 'react';
 import { createPortal } from 'react-dom';
+import styles from './NotificationContext.module.scss';
 
 type NotificationPayload = {
   title: string;
@@ -24,7 +25,7 @@ const NotificationContext = createContext<NotificationContext>({
   displayNotification: () => null,
 });
 
-const DEFAULT_TIMEOUT = 5000;
+const DEFAULT_TIMEOUT = 6000;
 
 type Props = {
   children: React.ReactNode;
@@ -58,16 +59,10 @@ export function NotificationProvider({ children }: Props) {
       {children}
       {!!notifications.length &&
         createPortal(
-          <div
-            style={{
-              position: 'fixed',
-              top: '12px',
-              right: '12px',
-            }}
-          >
+          <div className={styles.container}>
             {notifications.map((notification) => (
               <ToastNotification
-                style={{ marginBottom: '8px'}}
+                className={styles.notification}
                 key={notification.id}
                 onCloseButtonClick={() => closeNotification(notification.id)}
                 kind='success'

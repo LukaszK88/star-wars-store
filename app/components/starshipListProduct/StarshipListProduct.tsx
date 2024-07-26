@@ -64,7 +64,7 @@ export default function StarshipListProduct({ starship }: Props) {
         </div>
 
         <div className={styles.overview}>Overview</div>
-        <div className='grid grid-cols-3 gap-2'>
+        <div className='grid lg:grid-cols-3 sm:grid-cols-2 gap-2'>
           <Tag type='outline' renderIcon={UserMultiple}>
             {starship.crew} Passengers
           </Tag>
