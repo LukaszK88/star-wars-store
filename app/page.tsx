@@ -68,7 +68,7 @@ export default function Home() {
     <HeaderContainer
       render={({ isSideNavExpanded, onClickSideNavExpand }) => (
         <>
-          <Header>
+          <Header aria-label='Intergalatical Store'>
             <HeaderMenuButton
               aria-label={isSideNavExpanded ? 'Close menu' : 'Open menu'}
               onClick={onClickSideNavExpand}
