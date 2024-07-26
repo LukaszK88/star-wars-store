@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint --dir . && prettier --write .",
     "test": "jest",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "e2e:run": "cypress run"
   },
   "dependencies": {
     "@carbon/type": "^11.28.0",

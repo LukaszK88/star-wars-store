@@ -10,6 +10,7 @@ const config: Config = {
   preset: 'ts-jest',
   moduleDirectories: ['node_modules', '<rootDir>'],
   resetMocks: true,
+  setupFiles: ['<rootDir>/tests/jestSetup.js'],
 };
 
 export default createJestConfig(config);

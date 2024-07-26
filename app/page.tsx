@@ -68,7 +68,7 @@ export default function Home() {
     <HeaderContainer
       render={({ isSideNavExpanded, onClickSideNavExpand }) => (
         <>
-          <Header aria-label='IBM Platform Name'>
+          <Header>
             <HeaderMenuButton
               aria-label={isSideNavExpanded ? 'Close menu' : 'Open menu'}
               onClick={onClickSideNavExpand}

@@ -7,7 +7,7 @@ import StarshipListProduct from './components/StarshipListProduct/StarshipListPr
 
 jest.mock('./api/useGetStarships');
 jest.mock(
-  './components/starshipListProduct/StarshipListProduct',
+  './components/StarshipListProduct/StarshipListProduct',
   // eslint-disable-next-line react/display-name
   () => (args: ComponentProps<typeof StarshipListProduct>) => (
     <div data-testid='StarshipListProduct' {...args} />
