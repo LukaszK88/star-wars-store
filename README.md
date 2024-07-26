@@ -13,7 +13,7 @@
 
 ### About the Project
 
-[View Production Version](https://star-wars-store-nine.vercel.app/)
+## Project is hosted on https://star-wars-store-nine.vercel.app/
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
