@@ -66,7 +66,7 @@ export default function ListProduct({
           </div>
           <Button
             onClick={handleStarshipPurchase}
-            className='items-center'
+            className='items-center w-full sm:w-auto'
             isExpressive
           >
             Add to Basket
