@@ -3,20 +3,16 @@ import { useGetStarships } from '@/app/api/useGetStarships';
 import StarshipListProduct from '@/app/components/starshipListProduct/StarshipListProduct';
 import {
   Column,
-  Content,
   Grid,
   Header,
   HeaderContainer,
   HeaderMenuButton,
   HeaderName,
   Loading,
-  Row,
   SideNav,
   SideNavItems,
   SideNavLink,
-  SideNavMenu,
-  SideNavMenuItem,
-  SkipToContent,
+  Pagination,
 } from 'carbon-components-react';
 import {
   Error,
@@ -28,9 +24,15 @@ import {
   Bat,
   Tank,
 } from '@carbon/icons-react';
+import { useState } from 'react';
 
 export default function Home() {
-  const { data, error, isLoading } = useGetStarships();
+  const [currentPage, setCurentPage] = useState(1);
+  const { data, error, isLoading } = useGetStarships({ page: currentPage });
+
+  const handleNextPage = ({ page }: { page: number; pageSize: number }) => {
+    setCurentPage(page);
+  };
 
   const renderStarships = () => {
     return data?.results.map((starship) => (
@@ -72,7 +74,7 @@ export default function Home() {
               onClick={onClickSideNavExpand}
               isActive={isSideNavExpanded}
               aria-expanded={isSideNavExpanded}
-            />{' '}
+            />
             <HeaderName href='#' prefix='Intergalatical'>
               Store
             </HeaderName>
@@ -99,7 +101,23 @@ export default function Home() {
               </SideNavItems>
             </SideNav>
           </Header>
-          <Grid className='mt-20'>{renderStarships()}</Grid>;
+          <Grid className='mt-20'>
+            {renderStarships()}
+            <Column className='pb-8' lg={{ offset: 3, span: 16 }} md={8} sm={4}>
+              <Pagination
+                backwardText='Previous page'
+                forwardText='Next page'
+                itemsPerPageText='Items per page:'
+                onChange={handleNextPage}
+                page={currentPage}
+                pageSize={10}
+                pageSizes={[10]}
+                size='md'
+                totalItems={data.count}
+              />
+            </Column>
+          </Grid>
+          ;
         </>
       )}
     />
