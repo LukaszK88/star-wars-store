@@ -1,1 +1,6 @@
-export const fetcher = (...args) => fetch(...args).then((res) => res.json());
+export const fetcher = <T>(...args: Parameters<typeof fetch>) => fetch(...args).then((res) => {
+    if (!res.ok) {
+      throw new Error(`Error: ${res.statusText}`);
+    }
+    return res.json() as Promise<T>;
+  })
