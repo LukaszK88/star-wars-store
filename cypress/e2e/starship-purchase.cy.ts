@@ -9,7 +9,7 @@ describe('starship purchase', () => {
   });
 
   it('should add starship to basket', () => {
-    cy.visit('http://localhost:3000/');
+    cy.visit('/');
 
     cy.contains('Add to Basket').click();
 
@@ -19,7 +19,7 @@ describe('starship purchase', () => {
   });
 
   it('should add multiple starships to basket', () => {
-    cy.visit('http://localhost:3000/');
+    cy.visit('/');
 
     cy.get('button[title="Increment number"]:first').click();
     cy.get('button[title="Increment number"]:first').click();
