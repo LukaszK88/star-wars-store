@@ -6,15 +6,15 @@ import { ComponentProps } from 'react';
 import StarshipListProduct from './components/starshipListProduct/StarshipListProduct';
 
 jest.mock('./api/useGetStarships');
-// eslint-disable-next-line react/display-name
 jest.mock(
   './components/starshipListProduct/StarshipListProduct',
+  // eslint-disable-next-line react/display-name
   () => (args: ComponentProps<typeof StarshipListProduct>) => (
     <div data-testid='StarshipListProduct' {...args} />
   )
 );
 
-describe('Home Page', () => {
+describe('<Home />', () => {
   it('should display error notice upon fetching starships data', () => {
     jest.mocked(useGetStarships).mockReturnValue({
       data: undefined,

@@ -9,6 +9,7 @@ const config: Config = {
   testEnvironment: 'jsdom',
   preset: 'ts-jest',
   moduleDirectories: ['node_modules', '<rootDir>'],
+  resetMocks: true,
 };
 
 export default createJestConfig(config);

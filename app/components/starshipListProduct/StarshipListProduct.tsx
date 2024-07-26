@@ -92,7 +92,7 @@ export default function StarshipListProduct({ starship }: Props) {
               onChange={handleQuantityChange}
               className={styles.numberInput}
               size='sm'
-              id='number-input'
+              id='quantity-input'
               label='Number of Ships'
               min={1}
               value={quantity}
