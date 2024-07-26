@@ -1,6 +1,8 @@
 'use client';
 import { useGetStarships } from '@/app/api/useGetStarships';
-import StarshipListProduct from './components/listProduct/ListProduct';
+import StarshipListProduct from '@/app/components/starshipListProduct/StarshipListProduct';
+import { Loading } from 'carbon-components-react';
+import { Error, ShoppingCartClear } from '@carbon/icons-react';
 
 export default function Home() {
   const { data, error, isLoading } = useGetStarships();
@@ -11,8 +13,21 @@ export default function Home() {
     ));
   };
 
-  if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
+  if (error)
+    return (
+      <div className='flex flex-col h-screen justify-center items-center'>
+        <Error size={40} />
+        Something went wrong
+      </div>
+    );
+  if (isLoading) return <Loading />;
+  if (!data?.results.length)
+    return (
+      <div className='flex flex-col h-screen justify-center items-center'>
+        <ShoppingCartClear size={40} />
+        No starships avaialble
+      </div>
+    );
 
   return (
     <main className='flex min-h-screen flex-col justify-between p-6'>

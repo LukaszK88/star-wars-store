@@ -1,10 +1,4 @@
-import {
-  Button,
-  Tile,
-  NumberInput,
-  Tag,
-  NumberInputOnChangeDataVariant,
-} from 'carbon-components-react';
+import { Button, Tile, NumberInput, Tag } from 'carbon-components-react';
 import {
   UserMultiple,
   Portfolio,
@@ -15,7 +9,7 @@ import {
   ToolKit,
   Rocket,
 } from '@carbon/icons-react';
-import styles from './ListProduct.module.scss';
+import styles from './StarshipListProduct.module.scss';
 import { useNotificationContext } from '@/app/context/NotificationContext';
 import { useState } from 'react';
 import { formatMoney } from '@/app/utils/money';

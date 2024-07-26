@@ -5,5 +5,5 @@ import { PaginatedResponse } from '../types/api';
 export const useGetStarships = () =>
   useSWR<PaginatedResponse<Starship>>(
     'https://swapi.dev/api/starships',
-    fetcher,
+    fetcher
   );
