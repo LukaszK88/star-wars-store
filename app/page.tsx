@@ -1,6 +1,6 @@
 'use client';
 import { useGetStarships } from '@/app/api/useGetStarships';
-import StarshipListProduct from '@/app/components/starshipListProduct/StarshipListProduct';
+import StarshipListProduct from '@/app/components/StarshipListProduct/StarshipListProduct';
 import {
   Column,
   Grid,
@@ -117,7 +117,6 @@ export default function Home() {
               />
             </Column>
           </Grid>
-          ;
         </>
       )}
     />

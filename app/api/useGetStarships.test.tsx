@@ -19,7 +19,7 @@ describe('useGetStarships', () => {
       json: () => Promise.resolve(starshipResponse),
       ok: true,
     });
-    const { result } = renderHook(() => useGetStarships(), { wrapper });
+    const { result } = renderHook(() => useGetStarships({ page: 1}), { wrapper });
 
     await waitFor(() => {
       expect(result.current.isLoading).toBeFalsy();
@@ -34,7 +34,7 @@ describe('useGetStarships', () => {
       json: () => Promise.reject('ups'),
       ok: true,
     });
-    const { result } = renderHook(() => useGetStarships(), { wrapper });
+    const { result } = renderHook(() => useGetStarships({ page: 1}), { wrapper });
 
     await waitFor(() => {
       expect(result.current.isLoading).toBeFalsy();

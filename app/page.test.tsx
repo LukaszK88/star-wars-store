@@ -3,7 +3,7 @@ import Home from './page';
 import { useGetStarships } from '@/app/api/useGetStarships';
 import { starshipResponse } from './tests/fixtures/starship';
 import { ComponentProps } from 'react';
-import StarshipListProduct from './components/starshipListProduct/StarshipListProduct';
+import StarshipListProduct from './components/StarshipListProduct/StarshipListProduct';
 
 jest.mock('./api/useGetStarships');
 jest.mock(

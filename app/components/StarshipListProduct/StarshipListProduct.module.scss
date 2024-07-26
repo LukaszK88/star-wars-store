@@ -26,13 +26,6 @@
   padding-bottom: $spacing-04;
 }
 
-@media (screen(sm)) {
-  .numberInput {
-    padding-bottom: 0;
-    padding-right: $spacing-04;
-  }
-}
-
 .footer {
   padding-top: $spacing-08;
   display: flex;
@@ -41,6 +34,11 @@
 }
 
 @media (screen(sm)) {
+  .numberInput {
+    padding-bottom: 0;
+    padding-right: $spacing-04;
+  }
+
   .footer {
     flex-direction: row;
     justify-content: flex-end;

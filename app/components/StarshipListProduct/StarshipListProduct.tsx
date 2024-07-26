@@ -1,4 +1,4 @@
-import { Button, Tile, NumberInput, Tag } from 'carbon-components-react';
+import { Button, Tile, NumberInput } from 'carbon-components-react';
 import {
   UserMultiple,
   Portfolio,
@@ -13,6 +13,7 @@ import styles from './StarshipListProduct.module.scss';
 import { useNotificationContext } from '@/app/context/NotificationContext';
 import { useState } from 'react';
 import { formatMoney } from '@/app/utils/money';
+import ProductOverviewTag from '../ProductOverviewTag/ProductOverviewTag';
 
 type Props = {
   starship: Starship;
@@ -60,33 +61,48 @@ export default function StarshipListProduct({ starship }: Props) {
         </div>
 
         <div className={styles.overview}>Overview</div>
-        <div className='grid lg:grid-cols-3 sm:grid-cols-2 gap-2'>
-          <Tag type='outline' renderIcon={UserMultiple}>
-            {starship.crew} Passengers
-          </Tag>
-          <Tag type='outline' renderIcon={ToolKit}>
-            {starship.crew} Crew
-          </Tag>
-          <Tag type='outline' renderIcon={Portfolio}>
-            {starship.cargo_capacity}
-          </Tag>
-          <Tag type='outline' renderIcon={Wheat}>
-            {starship.consumables}
-          </Tag>
-          <Tag type='outline' renderIcon={StarFilled}>
-            {starship.hyperdrive_rating} Hyperdrive
-          </Tag>
-          <Tag type='outline' renderIcon={Ruler}>
-            {starship.length} Meters
-          </Tag>
-          <Tag type='outline' renderIcon={Meter}>
-            {starship.max_atmosphering_speed} Max Speed
-          </Tag>
-          <Tag type='outline' renderIcon={Rocket}>
-            {starship.starship_class}
-          </Tag>
+        <div className='grid lg:grid-cols-3 sm:grid-cols-2 gap-6'>
+          <ProductOverviewTag
+            Icon={UserMultiple}
+            name='Passengers'
+            value={starship.passengers}
+          />
+          <ProductOverviewTag
+            Icon={ToolKit}
+            name='Crew'
+            value={starship.crew}
+          />
+          <ProductOverviewTag
+            Icon={Portfolio}
+            name='Cargo'
+            value={starship.cargo_capacity}
+          />
+          <ProductOverviewTag
+            Icon={Wheat}
+            name='Consumables'
+            value={starship.consumables}
+          />
+          <ProductOverviewTag
+            Icon={StarFilled}
+            name='Hyperdrive'
+            value={starship.hyperdrive_rating}
+          />
+          <ProductOverviewTag
+            Icon={Ruler}
+            name='Length'
+            value={starship.length}
+          />
+          <ProductOverviewTag
+            Icon={Meter}
+            name='Max Speed'
+            value={starship.max_atmosphering_speed}
+          />
+          <ProductOverviewTag
+            Icon={Rocket}
+            name='Class'
+            value={starship.starship_class}
+          />
         </div>
-
         <div className={styles.footer}>
           <div>
             <NumberInput
