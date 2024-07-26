@@ -70,6 +70,6 @@ describe('<Home />', () => {
 
     render(<Home />);
 
-    expect(screen.getByText('No starships avaialble')).toBeDefined();
+    expect(screen.getByText('No starships available')).toBeDefined();
   });
 });
