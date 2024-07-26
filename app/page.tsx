@@ -1,15 +1,48 @@
 'use client';
 import { useGetStarships } from '@/app/api/useGetStarships';
 import StarshipListProduct from '@/app/components/starshipListProduct/StarshipListProduct';
-import { Loading } from 'carbon-components-react';
-import { Error, ShoppingCartClear } from '@carbon/icons-react';
+import {
+  Column,
+  Content,
+  Grid,
+  Header,
+  HeaderContainer,
+  HeaderMenuButton,
+  HeaderName,
+  Loading,
+  Row,
+  SideNav,
+  SideNavItems,
+  SideNavLink,
+  SideNavMenu,
+  SideNavMenuItem,
+  SkipToContent,
+} from 'carbon-components-react';
+import {
+  Error,
+  ShoppingCartClear,
+  Rocket,
+  Video,
+  UserMultiple,
+  Earth,
+  Bat,
+  Tank,
+} from '@carbon/icons-react';
 
 export default function Home() {
   const { data, error, isLoading } = useGetStarships();
 
   const renderStarships = () => {
     return data?.results.map((starship) => (
-      <StarshipListProduct key={starship.name} starship={starship} />
+      <Column
+        key={starship.name}
+        className='pb-8'
+        lg={{ offset: 3, span: 16 }}
+        md={8}
+        sm={4}
+      >
+        <StarshipListProduct starship={starship} />
+      </Column>
     ));
   };
 
@@ -30,10 +63,45 @@ export default function Home() {
     );
 
   return (
-    <main className='flex min-h-screen flex-col justify-between p-6'>
-      <div className='grid lg:grid-cols-2 md:grid-cols-1 gap-6'>
-        {renderStarships()}
-      </div>
-    </main>
+    <HeaderContainer
+      render={({ isSideNavExpanded, onClickSideNavExpand }) => (
+        <>
+          <Header aria-label='IBM Platform Name'>
+            <HeaderMenuButton
+              aria-label={isSideNavExpanded ? 'Close menu' : 'Open menu'}
+              onClick={onClickSideNavExpand}
+              isActive={isSideNavExpanded}
+              aria-expanded={isSideNavExpanded}
+            />{' '}
+            <HeaderName href='#' prefix='Intergalatical'>
+              Store
+            </HeaderName>
+            <SideNav aria-label='Side navigation' expanded={isSideNavExpanded}>
+              <SideNavItems>
+                <SideNavLink renderIcon={Rocket} href='/'>
+                  Starships
+                </SideNavLink>
+                <SideNavLink renderIcon={Video} href='/'>
+                  Films
+                </SideNavLink>
+                <SideNavLink renderIcon={UserMultiple} href='/'>
+                  People
+                </SideNavLink>
+                <SideNavLink renderIcon={Earth} href='/'>
+                  Planets
+                </SideNavLink>
+                <SideNavLink renderIcon={Bat} href='/'>
+                  Species
+                </SideNavLink>
+                <SideNavLink renderIcon={Tank} href='/'>
+                  Vehicles
+                </SideNavLink>
+              </SideNavItems>
+            </SideNav>
+          </Header>
+          <Grid className='mt-20'>{renderStarships()}</Grid>;
+        </>
+      )}
+    />
   );
 }
