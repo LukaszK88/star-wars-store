@@ -15,9 +15,10 @@ import {
   ToolKit,
   Rocket,
 } from '@carbon/icons-react';
-import styles from './StarshipListProduct.module.scss';
+import styles from './ListProduct.module.scss';
 import { useNotificationContext } from '@/app/context/NotificationContext';
 import { useState } from 'react';
+import { formatMoney } from '@/app/utils/money';
 
 type Props = {
   starship: Starship;
@@ -32,7 +33,7 @@ export default function StarshipListProduct({ starship }: Props) {
     if (cost === 'unknown') {
       return 'Price Unknown';
     }
-    return `${starship.cost_in_credits} Credits`;
+    return `${formatMoney(Number(starship.cost_in_credits))} Credits`;
   };
 
   const handleStarshipPurchase = () => {

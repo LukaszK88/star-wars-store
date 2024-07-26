@@ -1,6 +1,6 @@
 'use client';
 import { useGetStarships } from '@/app/api/useGetStarships';
-import StarshipListProduct from './components/starshipListProduct/StarshipListProduct';
+import StarshipListProduct from './components/listProduct/ListProduct';
 
 export default function Home() {
   const { data, error, isLoading } = useGetStarships();
